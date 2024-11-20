@@ -10,6 +10,7 @@ from pathlib import Path
 parser = argparse.ArgumentParser()
 parser.add_argument('--video', type=str, required=True, help='video path')
 parser.add_argument('--mask', type=str, help='mask video path')
+parser.add_argument('--mode', type=str, choices=['static', 'dynamic'], default='static', help='static or dynamic mask')
 args = parser.parse_args()
 
 
@@ -34,7 +35,7 @@ frames = pipe(video,
             # visualize_each_step_path=f"logs/vids",
             num_inference_steps=25,
             resample_steps=3,
-            guide_util=15,
+            guide_util=15 if args.mode == 'static' else 16,
             ).frames[0]
 
 print('Finish generating video. Exporting...')
