@@ -1,0 +1,517 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>ViewExtrapolator: Novel View Extrapolation with Video Diffusion Priors</title>
+  <link rel="stylesheet" href="assets/css/Highlight-Clean.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <meta property="og:site_name" content="ViewExtrapolator" />
+  <meta property="og:title" content="ViewExtrapolator: Novel View Extrapolation with Video Diffusion Priors" />
+  <meta property="og:description" content="ViewExtrapolator: Novel View Extrapolation with Video Diffusion Priors, 2024" />
+
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/codemirror.min.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+
+
+</head>
+
+<body>
+    <div class="highlight-clean">
+
+  <!-- title -->
+	<div class="container" style="max-width: 1000px; margin-bottom: 20px; margin-top: -30px;">
+    <div class="row" style="display: flex; justify-content: center; align-items: center; margin-bottom: 0px">
+      <div class="text-center">
+        <div>
+          <img src="assets/images/ninjabike.gif" class="img-responsive" style="margin:5px;  max-height: 170px; width: auto; height: auto;">
+        </div>
+      </div>
+      <div class="text-center">        
+        <div>
+          <img src="assets/images/orchid.gif" class="img-responsive" style="margin:5px; max-height: 170px; width: auto; height: auto;">
+        </div>
+      </div>
+
+      <div class="text-center">
+        <div>
+          <img src="assets/images/caterpillar.gif" class="img-responsive" style="margin:5px;max-height: 170px; width: auto; height: auto;">
+        </div>
+      </div>
+
+      <div class="text-center">
+        <div>
+          <img src="assets/images/hike.gif"  class="img-responsive" style="margin:5px;max-height: 170px; width: auto; height: auto;">
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="title-row" style="max-width: 100%; margin: 0 auto; display: inline-block; text-align: center; display: flex;">
+        <h1 class="col-md-12 text-center" id="title">
+          <b>ViewExtrapolator</b>: Novel View Extrapolation <br> with Video Diffusion Priors <br>
+            <!-- <small>
+                2024
+            </small> -->
+        </h1>
+    </div>
+	</div>
+
+  <!-- authors -->
+	<div class="container" style="max-width: 1000px; margin-bottom: 30px;">
+		<div class="row" id="author-row" style="margin:0 auto;">
+      <div class="col-md-12 text-center" style="display: table; margin:0 auto">
+          <table class="author-table" id="author-table">
+              <tr>
+                  <td style="padding:10px">
+                      <a style="text-decoration:none; " href="https://kunhao-liu.github.io/">
+                        <b>Kunhao Liu</b>
+                      </a>
+                      <br>Nanyang Technological University
+                  </td>
+                <td style="padding:10px;">
+                    <a style="text-decoration:none" href="https://ling-shao.github.io/">
+                      <b>Ling Shao</b>
+                    </a>
+                    <br>UCAS-Terminus AI Lab, UCAS
+                </td>
+                <td style="padding:10px;">
+                  <a style="text-decoration:none" href="https://personal.ntu.edu.sg/shijian.lu/">
+                    <b>Shijian Lu</b>
+                  </a>
+                  <br>Nanyang Technological University
+                </td>
+            </tr>
+          </table>
+      </div>
+  </div>   
+	</div>
+  
+  <!-- paper&code -->
+  <div class="container" style="max-width: 500px; margin-bottom: -20px;">
+  <div class="row">
+      <div class="text-center"> 
+          <ul class="nav nav-pills nav-justified">
+              <li>
+                  <a href="" target="_blank">
+                  <img src="assets/images/arxiv.png" height="35px">
+                      <h4><strong>Paper</strong></h4>
+                  </a>
+              </li>
+              <li>
+                  <a href="" target="_blank">
+                  <img src="assets/images/github.png" height="35px">
+                      <h4><strong>Code</strong></h4>
+                  </a>
+              </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+    </div>
+
+
+
+    <!-- teaser -->
+    <div class="container" style="max-width: 1000px;">
+      <div class="row">
+          <div class="col-md-12">
+              <image src="assets/images/teaser.jpg" class="img-responsive" style="width: 900px; margin:auto; margin-bottom:20px"></image>
+          </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+
+    <!-- abstract -->
+    <div class="container" style="max-width: 1000px;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Abstract</h2>
+                <p class="text-justify">
+                  The field of novel view synthesis has made significant strides due to the development of radiance field methods. However, most radiance field techniques are far better at novel view interpolation than novel view extrapolation where the synthesis novel views are far beyond the observed training views. We design ViewExtrapolator, a novel view synthesis approach that leverages the generative priors of Stable Video Diffusion (SVD) for realistic novel view extrapolation. By redesigning the SVD denoising process, ViewExtrapolator refines the artifact-prone views rendered by radiance fields, greatly enhancing the clarity and realism of the synthesized novel views. ViewExtrapolator is a generic novel view extrapolator that can work with different types of 3D rendering such as views rendered from point clouds when only a single view or monocular video is available. Additionally, ViewExtrapolator requires no fine-tuning of SVD, making it both data-efficient and computation-efficient. Extensive experiments demonstrate the superiority of ViewExtrapolator in novel view extrapolation.
+          </p>
+				<h3>TL;DR</h3>
+        <p class="text-justify">
+          We introduce ViewExtrapolator, a novel approach that leverages the generative priors of Stable Video Diffusion for novel view extrapolation, where the novel views lie far beyond the range of the training views. </p>
+        </div>
+        </div>
+    </div>
+
+    
+    <!-- Background -->
+    <hr class="divider" />
+    <div class="container" style="max-width: 1000px;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 style="margin-bottom: 20px;">Background</h2>
+                
+                <image src="assets/images/background.jpg" class="img-responsive" alt="overview" width="60%" style="width: 900px; margin:auto; margin-bottom:20px"></image>
+                <p class="text-justify">
+                  <i>(Left)</i> Radiance fields perform well in novel view <b>interpolation</b> but face significant challenges in novel view <b>extrapolation</b>, where test novel views extend far beyond the range of the training views. In these extrapolation scenarios, radiance field rendering quality deteriorates notably, often introducing substantial artifacts.
+                  <br><br>
+                  <i>(Right)</i> Most existing benchmarks such as LLFF and Mipnerf-360 take an interpolation setting, as test views are situated close to the training views. Thus we propose LLFF-Extra, a new dataset in which test novel views are placed well beyond the range of the training views, offering a more suitable evaluation of novel view extrapolation.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- overview -->
+    <hr class="divider" />
+    <div class="container" style="max-width: 1000px;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Overview</h2>
+                <image src="assets/images/overview.jpg" class="img-responsive" alt="overview" width="60%" style="width: 900px; margin:auto; margin-bottom:20px"></image>
+                <p class="text-justify">
+                  We render an artifact-prone video from the closest training view to an extrapolative novel view with radiance fields or point clouds. We then refine the rendered artifact-prone video by guiding SVD to preserve the original scene content and eliminate the artifacts with guidance annealing and resampling annealing.
+                  Please refer to the paper for more technical details.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Comparisons -->
+    <hr class="divider" />
+    <div class="container" style="max-width: 1000px;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Comparisons</h2>
+                <p class="text-justify">
+                  Comparisons of ViewExtrapolator and 3D Gaussian Splatting on novel view extrapolation. Please refer to the paper for more qualitative and quantitative comparisons.
+                  (Click to play) 
+                  <br>
+                  <b>NOTE:</b> Please use Chrome for better viewing.
+                </p>
+            </div>
+        </div>
+
+        <div class="row" style="display: flex; justify-content: center; align-items: center;">
+          <div class="text-center">
+            3DGS
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/benchflower_3dgs.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="text-center">
+            <b>Ours</b>
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/benchflower_ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div class="text-center">
+            3DGS
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/hugetrike_3dgs.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <b>Ours</b>
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/hugetrike_ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          
+            
+        </div>
+
+        <div class="row" style="display: flex; justify-content: center; align-items: center;">
+          <div class="text-center">
+            3DGS
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/ninjabike_3dgs.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="text-center">
+            <b>Ours</b>
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/ninjabike_ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div class="text-center">
+            3DGS
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/stove_3dgs.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <b>Ours</b>
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/stove_ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          
+            
+        </div>
+        <div class="row" style="display: flex; justify-content: center; align-items: center;">
+          <div class="text-center">
+            3DGS
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/trexsanta_3dgs.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="text-center">
+            <b>Ours</b>
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/trexsanta_ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div class="text-center">
+            3DGS
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/chesstable_3dgs.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <b>Ours</b>
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/chesstable_ours.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          
+            
+        </div>
+    </div>
+
+
+    <!-- applications -->
+    <hr class="divider" />
+    <div class="container" style="max-width: 1000px;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Applications</h2>
+                <p class="text-justify">
+                  Applications of ViewExtrapolator for novel view extrapolation on single views and monocular videos.
+                  (Click to play) 
+                  <br>
+                  <b>NOTE:</b> Please use Chrome for better viewing.
+                </p>
+            </div>
+        </div>
+
+        <div class="row" style="display: flex; justify-content: center; align-items: center;">
+          <div class="text-center">
+            Point cloud
+            
+            <div style="margin-top: 5px;">
+              <video controls  muted width="90%">
+                <source src="assets/videos/truck_point.webm" type="video/webm">
+              </video>
+            </div>
+          </div>
+          
+          <div class="text-center">
+            <b>Ours</b>
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/truck_refine.webm" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div class="text-center">
+            Point cloud
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/caterpillar_point.webm" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="text-center">
+            <b>Ours</b>
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/caterpillar_refine.webm" type="video/mp4">
+              </video>
+            </div>
+          </div>
+            
+        </div>
+         
+
+        <div class="row" style="display: flex; justify-content: center; align-items: center;">
+          <div class="text-center">
+            Point cloud
+            
+            <div style="margin-top: 5px;">
+              <video controls  muted width="90%">
+                <source src="assets/videos/ignatius_point.webm" type="video/webm">
+              </video>
+            </div>
+          </div>
+          
+          <div class="text-center">
+            <b>Ours</b>
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/ignatius_refine.webm" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div class="text-center">
+            Point cloud
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/train_point.webm" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="text-center">
+            <b>Ours</b>
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/train_refine.webm" type="video/mp4">
+              </video>
+            </div>
+          </div>
+            
+        </div>
+
+
+        <div class="row" style="display: flex; justify-content: center; align-items: center;">
+          <div class="text-center">
+            Point cloud
+            
+            <div style="margin-top: 5px;">
+              <video controls  muted width="90%">
+                <source src="assets/videos/hike.webm" type="video/webm">
+              </video>
+            </div>
+          </div>
+          
+          <div class="text-center">
+            <b>Ours</b>
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/hike_refine.webm" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div class="text-center">
+            Point cloud
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/traindyn.webm" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="text-center">
+            <b>Ours</b>
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/traindyn_refine.webm" type="video/mp4">
+              </video>
+            </div>
+          </div>
+            
+        </div>
+    </div>
+    
+
+
+    <!-- citation -->
+    <hr class="divider" />
+  
+    <div class="container" style="max-width: 1000px;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Citation</h2>
+                Consider citing us if you find this project is helpful. <br>
+                <code>
+                    @article{liu2024novel,<br>
+                      &nbsp; title={Novel View Extrapolation with Video Diffusion Priors},<br>
+                      &nbsp; author={Liu, Kunhao and Shao, Ling and Lu, Shijian},<br>
+                      &nbsp; journal={arXiv preprint arXiv:???},<br>
+                      &nbsp; year={2024}<br>
+                    }
+                    </code>
+              </div>
+        </div>
+    </div>
+
+
+    <!-- Acknowledgements -->
+    <hr class="divider" />
+
+    <div class="container" style="max-width: 1000px;">
+      <div class="row">
+        <div class="col-md-12">
+              <h2>Acknowledgements</h2>
+              <p>
+                Our work is based on <a href="https://stability.ai/stable-video"> Stable Video Diffusion </a> and <a href="https://github.com/nerfstudio-project/gsplat"> gsplat </a> implementation of <a href="https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/"> 3D Gaussian Splatting </a>. We thank the authors for their great work and open-sourcing the code.
+                We would also like to express our gratitude to <a href="https://fnzhan.com/">Fangneng </a> for his guidance and discussion.
+              </p>
+                <br></p>
+              </div>
+          </div>
+    </div>
+
+  
+</body>
+
+</html>
