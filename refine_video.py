@@ -1,8 +1,8 @@
 import torch
 # from UniDepth.unidepth.models import UniDepthV2
-from my_svd_pipeline import StableVideoDiffusionPipeline
+from svd_pipeline import StableVideoDiffusionPipeline
 from monocular.utils import video_to_numpy, mask_to_numpy, export_to_video
-from my_scheduler import EulerDiscreteScheduler
+from scheduler import EulerDiscreteScheduler
 import argparse
 from pathlib import Path
 
