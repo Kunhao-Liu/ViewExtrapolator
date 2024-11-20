@@ -1,4 +1,4 @@
-# ViewExtrapolator: Novel View Extrapolation with Video Diffusion Priors
+# [*arXiv 2024*] ViewExtrapolator: Novel View Extrapolation with Video Diffusion Priors
 
 ## [Project page](https://kunhao-liu.github.io/ViewExtrapolator/) |  [Paper]()
 
