@@ -16,7 +16,7 @@ dependencies:
       - numpy==1.26.4
       - transformers==4.41.2
       - accelerate==0.31.0
-      - viser
+      - viser==0.2.9
       - imageio[ffmpeg]
       - numpy==1.26.4
       - matplotlib==3.9.2
