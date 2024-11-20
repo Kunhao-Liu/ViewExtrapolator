@@ -6,18 +6,22 @@ from typing import List, Union
 import os
 
 import torch
-from pytorch3d.structures import Pointclouds
-from pytorch3d.renderer import (
-    PerspectiveCameras,
-    PointsRasterizationSettings,
-    PointsRasterizer,
-    PointsRenderer,
-    AlphaCompositor,
-    NormWeightedCompositor,
-    look_at_view_transform,
-    FoVOrthographicCameras,
-    camera_conversions
-)
+
+try:
+    from pytorch3d.structures import Pointclouds
+    from pytorch3d.renderer import (
+        PerspectiveCameras,
+        PointsRasterizationSettings,
+        PointsRasterizer,
+        PointsRenderer,
+        AlphaCompositor,
+        NormWeightedCompositor,
+        look_at_view_transform,
+        FoVOrthographicCameras,
+        camera_conversions
+    )
+except ImportError:
+    print("Pytorch3d not installed.")
 
 
 def mask_to_numpy(mask_path):

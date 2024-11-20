@@ -1,10 +1,12 @@
 
 
+Install environment:
+```bash
+cd monocular
 conda env create -f environment.yml 
 conda activate ViewExtra_Mono
 pip install -e UniDepth
-
-
+```
 
 
 python warp_unidepth.py --image_path .. --direction .. --degree
