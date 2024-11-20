@@ -1,0 +1,3 @@
+[submodule "monocular/UniDepth"]
+	path = monocular/UniDepth
+	url = git@github.com:lpiccinelli-eth/UniDepth.git
