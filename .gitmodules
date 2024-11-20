@@ -1,3 +1,6 @@
 [submodule "monocular/UniDepth"]
 	path = monocular/UniDepth
 	url = git@github.com:lpiccinelli-eth/UniDepth.git
+[submodule "monocular/DepthCrafter"]
+	path = monocular/DepthCrafter
+	url = git@github.com:Tencent/DepthCrafter.git
