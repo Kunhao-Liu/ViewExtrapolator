@@ -1,0 +1,30 @@
+name: viewextra
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+  - pytorch3d 
+  - iopath
+dependencies:
+  - python=3.11
+  - pytorch==2.1.0 
+  - torchvision==0.16.0 
+  - torchaudio==2.1.0 
+  - pytorch-cuda=12.1
+  - pytorch3d
+  - iopath
+  - diffusers
+  - pip:
+      - viser
+      - imageio[ffmpeg]
+      - numpy==1.26.4
+      - scikit-learn
+      - tqdm
+      - torchmetrics[image]
+      - opencv-python
+      - tyro
+      - Pillow
+      - tensorboard
+      - einops
+
