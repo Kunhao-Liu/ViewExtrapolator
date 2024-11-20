@@ -32,7 +32,7 @@ cd ViewExtrapolator
 Our work is based on [Stable Video Diffusion](https://stability.ai/stable-video) and [gsplat](https://github.com/nerfstudio-project/gsplat) implementation of [3D Gaussian Splatting](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/) . We thank the authors for their great work and open-sourcing the code.
 
 ## Citation
-Consider citing us if you find this project is helpful.
+Consider citing us if you find this project helpful.
 ```
 @article{liu2024novel,
   title   = {Novel View Extrapolation with Video Diffusion Priors},
