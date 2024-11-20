@@ -56,7 +56,7 @@ class Refiner:
         # Densification Strategy
         self.strategy = DefaultStrategy(
             verbose=True,
-            scene_scale=self.scene_scale,
+            # scene_scale=self.scene_scale,
             prune_opa=cfg.prune_opa,
             grow_grad2d=cfg.grow_grad2d,
             grow_scale3d=cfg.grow_scale3d,
@@ -184,7 +184,7 @@ class Refiner:
         cfg = self.cfg
         device = self.device
 
-        max_steps = cfg.max_steps
+        max_steps = cfg.max_steps//3
         init_step = 0
 
         schedulers = [
