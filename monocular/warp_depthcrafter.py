@@ -15,25 +15,27 @@ from utils import get_look_up_camera_seq, get_look_right_camera_seq, get_circle_
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--output_folder', type=str, default='camel')
-    parser.add_argument('--input_path', type=str, default='examples/camel.mp4')
+    parser.add_argument('--video_path', type=str)
+    parser.add_argument('--depth_folder', type=str, default='demo_output')
+    parser.add_argument('--direction', type=str, choices=['up','down','left','right'], default='left', help='direction')
+    parser.add_argument('--degree', type=float, default=15, help='degree')
     
     args = parser.parse_args()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     os.makedirs('logs/imgs', exist_ok=True)
 
-    input_path = args.input_path
-    output_folder = args.output_folder
+    video_path = args.video_path
+    depth_folder = args.depth_folder
 
     # read depth
-    depth_path = glob.glob(f'{output_folder}/*.npz')[0]
+    depth_path = glob.glob(f'{depth_folder}/*.npz')[0]
     depth = np.load(depth_path)['depth'] # (F=25, H, W)
     depth = torch.from_numpy(depth).to(device) # in 0-1
 
 
     # read video
-    cap = cv2.VideoCapture(input_path)
+    cap = cv2.VideoCapture(video_path)
     frames = []
     while cap.isOpened():
         ret, frame = cap.read()
@@ -67,8 +69,18 @@ if __name__ == '__main__':
     frame_num = 25
 
     # direction camera
-    max_degree = 10
-    cams = get_look_right_camera_seq(extrinsics, max_degree, frame_num, look_at_depth)
+    max_degree = args.degree
+    # direction camera
+    if args.direction == 'up':
+        cams = get_look_up_camera_seq(extrinsics, max_degree, frame_num, look_at_depth)
+    elif args.direction == 'down':
+        cams = get_look_up_camera_seq(extrinsics, -max_degree, frame_num, look_at_depth)
+    elif args.direction == 'right':
+        cams = get_look_right_camera_seq(extrinsics, max_degree, frame_num, look_at_depth)
+    elif args.direction == 'left':
+        cams = get_look_right_camera_seq(extrinsics, -max_degree, frame_num, look_at_depth)
+    else:
+        raise ValueError('Invalid direction')
 
     rendered_frames = []
     masks = []
@@ -98,5 +110,5 @@ if __name__ == '__main__':
         cv2.imwrite(f'logs/imgs/rendered_image_{idx}.jpg', cv2.cvtColor(rendered_image*255, cv2.COLOR_BGR2RGB))
         cv2.imwrite(f'logs/imgs/mask_{idx}.jpg', mask*255)
 
-    export_to_video(rendered_frames, 'logs/rendered_video.mp4', fps=6)
-    export_to_video(masks, 'logs/mask_video.mp4', fps=6)
+    export_to_video(rendered_frames, 'logs/video.mp4', fps=6)
+    export_to_video(masks, 'logs/mask.mp4', fps=6)

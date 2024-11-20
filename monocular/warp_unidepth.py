@@ -14,7 +14,7 @@ from utils import get_look_up_camera_seq, get_look_right_camera_seq, get_circle_
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('image_path', type=str, help='image_path')
+    parser.add_argument('--image_path', type=str, help='image_path')
     parser.add_argument('--direction', type=str, choices=['up','down','left','right'], default='left', help='direction')
     parser.add_argument('--degree', type=float, default=15, help='degree')
     parser.add_argument('--use_confidence_mask', action='store_true', help='use_confidence_mask')
