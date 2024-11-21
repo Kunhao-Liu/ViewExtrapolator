@@ -17,6 +17,7 @@ if __name__ == '__main__':
     parser.add_argument('--image_path', type=str, help='image_path')
     parser.add_argument('--direction', type=str, choices=['up','down','left','right'], default='left', help='direction')
     parser.add_argument('--degree', type=float, default=15, help='degree')
+    parser.add_argument('--look_at_depth', type=float, default=1.0, help='look_at_depth')
     parser.add_argument('--use_confidence_mask', action='store_true', help='use_confidence_mask')
     args = parser.parse_args()
 
@@ -59,7 +60,7 @@ if __name__ == '__main__':
     extrinsics = np.eye(4)
 
     # calculate the camera parameters
-    look_at_depth = np.median(depth.cpu().numpy())
+    look_at_depth = np.median(depth.cpu().numpy()) * args.look_at_depth
     frame_num = 25
 
     max_degree = args.degree

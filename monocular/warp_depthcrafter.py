@@ -19,6 +19,7 @@ if __name__ == '__main__':
     parser.add_argument('--depth_folder', type=str, default='demo_output')
     parser.add_argument('--direction', type=str, choices=['up','down','left','right'], default='left', help='direction')
     parser.add_argument('--degree', type=float, default=15, help='degree')
+    parser.add_argument('--look_at_depth', type=float, default=1.0, help='look at depth')
     
     args = parser.parse_args()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -65,7 +66,7 @@ if __name__ == '__main__':
     extrinsics = np.eye(4)
 
     # calculate the camera parameters
-    look_at_depth = np.median((1.0 / (depth[0] + 0.1)).cpu().numpy())
+    look_at_depth = np.median((1.0 / (depth[0] + 0.1)).cpu().numpy()) * args.look_at_depth
     frame_num = 25
 
     # direction camera
