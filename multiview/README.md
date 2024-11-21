@@ -65,3 +65,4 @@ The refined 3DGS checkpoint will be saved at `<result_directory>/ckpts/refine_ck
 
 
 
+> Acknowledgement: Our interactive viewer is based on [Viser](https://github.com/nerfstudio-project/viser).
