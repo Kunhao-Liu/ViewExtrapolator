@@ -31,10 +31,37 @@ The remote viewer will be automatically launched, where you can view the trainin
 
 ### 3.2 Render the artifact-prone video
 
+If you use the LLFF-Extra dataset or include the `partition.json` file to specify the test novel view for your custom data, the artifact-prone video and the corresponding opacity mask will be automatically rendered and saved in `<result_directory>/to_refine`. This directory contains all the required data for 3D Gaussian Splatting refinement.
+
+If you do not include the `partition.json` file or wish to define a new test novel view, you can launch the remote viewer using the following command:
+```bash
+python viewer.py --ckpt <result_directory>/ckpts/ckpt_29999.pt --cfg <result_directory>/cfg.json
+# for example:
+python viewer.py --ckpt results/hugetrike/ckpts/ckpt_29999.pt --cfg results/hugetrike/cfg.json
+```
+
+<img src='https://github.com/user-attachments/assets/6f487069-c6dd-4220-a5f3-d92653dcbcc2' width='50%' />
+
+You can adjust the camera to your desired position and then click `Render Video From Closest View` to render the artifact-prone video.
+
+### 3.3 Refine the artifact-prone video
+
+The artifact-prone video can be refined by:
+```bash
+python ../refine_video.py --video <result_directory>/to_refine/video.mp4 --mask <result_directory>/to_refine/mask.mp4
+# for example:
+python ../refine_video.py --video results/hugetrike/to_refine/video.mp4 --mask results/hugetrike/to_refine/mask.mp4
+```
+The refined video and frames will be saved in `<result_directory>/to_refine/refined`.
+
+### 3.4 Refine 3D Gaussian Splatting
+With the refined video, you can refine the 3D Gaussian Splatting by:
+```bash
+python refiner.py --cfg <result_directory>/cfg.json
+# for example:
+python refiner.py --cfg results/hugetrike/cfg.json
+```
+The refined 3DGS checkpoint will be saved at `<result_directory>/ckpts/refine_ckpt_9999.pt` and the video rendered by the refined 3DGS will be saved at `<result_directory>/to_refine/refined_gs_render.mp4`.
 
 
-python trainer.py --data_dir data/stove_quant/ --result_dir results/stove_quant
-python refiner.py --cfg results/stove_quant/cfg.json
 
-
-Custom dataset
