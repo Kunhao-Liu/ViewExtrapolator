@@ -47,7 +47,7 @@ class Refiner:
         self.refine_dataset = Refine_Dataset(os.path.join(cfg.result_dir, "to_refine"))
 
         # Load the pre-optimized gaussian splats
-        ckpt_path = os.path.join(cfg.result_dir, "ckpts", "ckpt_10499.pt")
+        ckpt_path = os.path.join(cfg.result_dir, "ckpts", "ckpt_29999.pt")
         self.splats = torch.nn.ParameterDict(torch.load(ckpt_path, map_location=self.device)["splats"])
 
         # init the optimizers
