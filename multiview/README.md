@@ -27,7 +27,7 @@ python trainer.py --data_dir <data_directory> --result_dir <result_directory>
 # for example:
 python trainer.py --data_dir data/hugetrike --result_dir results/hugetrike
 ```
-You can view the training process at `http://localhost:8080`.
+The remote viewer will be automatically launched, where you can view the training process at `http://localhost:8080`.
 
 ### 3.2 Render the artifact-prone video
 

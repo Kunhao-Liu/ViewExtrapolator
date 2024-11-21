@@ -27,6 +27,6 @@ dependencies:
       - tyro
       - Pillow
       - tensorboard
-      - gsplat
+      - gsplat==1.1.1
 
 
