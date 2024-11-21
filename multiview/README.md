@@ -64,5 +64,5 @@ python refiner.py --cfg results/hugetrike/cfg.json
 The refined 3DGS checkpoint will be saved at `<result_directory>/ckpts/refine_ckpt_9999.pt` and the video rendered by the refined 3DGS will be saved at `<result_directory>/to_refine/refined_gs_render.mp4`.
 
 
-
-> Acknowledgement: Our interactive viewer is based on [Viser](https://github.com/nerfstudio-project/viser).
+## 4 Acknowledgements
+Our interactive viewer is based on [Viser](https://github.com/nerfstudio-project/viser) and [nerfview](https://github.com/hangg7/nerfview). We thank the authors for their great work and open-sourcing the code.
