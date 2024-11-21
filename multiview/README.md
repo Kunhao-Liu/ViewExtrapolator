@@ -54,7 +54,7 @@ python ../refine_video.py --video results/hugetrike/to_refine/video.mp4 --mask r
 ```
 The refined video and frames will be saved in `<result_directory>/to_refine/refined`.
 
-### 3.4 Refine 3D Gaussian Splatting
+### (Optional) 3.4 Refine 3D Gaussian Splatting
 With the refined video, you can refine the 3D Gaussian Splatting by:
 ```bash
 python refiner.py --cfg <result_directory>/cfg.json
