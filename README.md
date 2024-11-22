@@ -1,6 +1,6 @@
 # [*arXiv 2024*] ViewExtrapolator: Novel View Extrapolation with Video Diffusion Priors
 
-## [Project page](https://kunhao-liu.github.io/ViewExtrapolator/) |  [Paper]()
+## [Project page](https://kunhao-liu.github.io/ViewExtrapolator/) |  [Paper](https://arxiv.org/abs/2411.14208)
 
 <p float="left" align="center">
   <img src="https://kunhao-liu.github.io/ViewExtrapolator/assets/images/ninjabike.gif" width="23%" />
@@ -10,7 +10,7 @@
 </p>
 
 
-This repository contains the official implementation of the paper: [Novel View Extrapolation with Video Diffusion Priors](). We introduce ViewExtrapolator, a novel approach that leverages the generative priors of Stable Video Diffusion for novel view extrapolation, where the novel views lie far beyond the range of the training views.
+This repository contains the official implementation of the paper: [Novel View Extrapolation with Video Diffusion Priors](https://arxiv.org/abs/2411.14208). We introduce ViewExtrapolator, a novel approach that leverages the generative priors of Stable Video Diffusion for novel view extrapolation, where the novel views lie far beyond the range of the training views.
 
 
 
@@ -37,7 +37,7 @@ Consider citing us if you find this project helpful.
 @article{liu2024novel,
   title   = {Novel View Extrapolation with Video Diffusion Priors},
   author  = {Liu, Kunhao and Shao, Ling and Lu, Shijian},
-  journal = {arXiv preprint arXiv:???},
+  journal = {arXiv preprint arXiv:2411.14208},
   year    = {2024}
 }
 ```
