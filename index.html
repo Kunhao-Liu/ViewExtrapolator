@@ -158,7 +158,7 @@
                 <p class="text-justify">
                   <i>(Left)</i> Radiance fields perform well in novel view <b>interpolation</b> but face significant challenges in novel view <b>extrapolation</b>, where test novel views extend far beyond the range of the training views. In these extrapolation scenarios, radiance field rendering quality deteriorates notably, often introducing substantial artifacts.
                   <br><br>
-                  <i>(Right)</i> Most existing benchmarks such as LLFF and Mipnerf-360 take an interpolation setting, as test views are situated close to the training views. Thus we propose LLFF-Extra, a new dataset in which test novel views are placed well beyond the range of the training views, offering a more suitable evaluation of novel view extrapolation.
+                  <i>(Right)</i> Most existing benchmarks such as LLFF and Mipnerf-360 take an interpolation setting, as test views are situated close to the training views. Thus we propose <b>LLFF-Extra</b>, a new dataset in which test novel views are placed well beyond the range of the training views, offering a more suitable evaluation of novel view extrapolation.
                 </p>
             </div>
         </div>
@@ -187,7 +187,7 @@
     <div class="container" style="max-width: 1000px;">
         <div class="row">
             <div class="col-md-12">
-                <h2>Comparisons</h2>
+                <h2>Comparisons on LLFF-Extra</h2>
                 <p class="text-justify">
                   Comparisons of ViewExtrapolator and 3D Gaussian Splatting on novel view extrapolation. Please refer to the paper for more qualitative and quantitative comparisons.
                   (Click to play) 
@@ -327,6 +327,151 @@
         </div>
     </div>
 
+
+    <!-- More angles -->
+    <hr class="divider" />
+    <div class="container" style="max-width: 1000px;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>More Results with Higher Extrapolation Degree</h2>
+                <p class="text-justify">
+                  We show the qualitative results with bigger camera motion.
+                  (Click to play) 
+                </p>
+            </div>
+        </div>
+
+        <div class="row" style="display: flex; justify-content: center; align-items: center;">
+          <div class="text-center">
+            3DGS
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/more/0.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="text-center">
+            <b>Ours</b>
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/more/0refine.webm" type="video/webm">
+              </video>
+            </div>
+          </div>
+
+          <div class="text-center">
+            3DGS
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/more/1.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <b>Ours</b>
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/more/1refine.webm" type="video/webm">
+              </video>
+            </div>
+          </div>
+
+          
+            
+        </div>
+
+        <div class="row" style="display: flex; justify-content: center; align-items: center;">
+          <div class="text-center">
+            3DGS
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/more/2.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="text-center">
+            <b>Ours</b>
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/more/2refine.webm" type="video/webm">
+              </video>
+            </div>
+          </div>
+
+          <div class="text-center">
+            3DGS
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/more/3.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <b>Ours</b>
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/more/3refine.webm" type="video/webm">
+              </video>
+            </div>
+          </div>
+
+          
+            
+        </div>
+        <div class="row" style="display: flex; justify-content: center; align-items: center;">
+          <div class="text-center">
+            3DGS
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/more/4.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="text-center">
+            <b>Ours</b>
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/more/4refine.webm" type="video/webm">
+              </video>
+            </div>
+          </div>
+
+          <div class="text-center">
+            3DGS
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/more/5.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <b>Ours</b>
+            
+            <div style="margin-top: 5px;">
+              <video controls   muted width="90%">
+                <source src="assets/videos/more/5refine.webm" type="video/webm">
+              </video>
+            </div>
+          </div>
+
+          
+            
+        </div>
+    </div>
 
     <!-- applications -->
     <hr class="divider" />
